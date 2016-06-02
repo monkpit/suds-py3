@@ -26,15 +26,15 @@ class TransportError(Exception):
         self.fp = fp
 
 
-class Request:
+class Request(object):
     """
     A transport request
-    @ivar url: The url for the request.
-    @type url: str
-    @ivar message: The message to be sent in a POST request.
-    @type message: str
-    @ivar headers: The http headers to be used for the request.
-    @type headers: dict
+    @ivar url(object): The url for the request.
+    @type url(object): str
+    @ivar message(object): The message to be sent in a POST request.
+    @type message(object): str
+    @ivar headers(object): The http headers to be used for the request.
+    @type headers(object): dict
     """
 
     def __init__(self, url, message=None):
@@ -57,15 +57,15 @@ class Request:
         return '\n'.join(s)
 
 
-class Reply:
+class Reply(object):
     """
     A transport reply
-    @ivar code: The http code returned.
-    @type code: int
-    @ivar message: The message to be sent in a POST request.
-    @type message: str
-    @ivar headers: The http headers to be used for the request.
-    @type headers: dict
+    @ivar code(object): The http code returned.
+    @type code(object): int
+    @ivar message(object): The message to be sent in a POST request.
+    @type message(object): str
+    @ivar headers(object): The http headers to be used for the request.
+    @type headers(object): dict
     """
 
     def __init__(self, code, headers, message):
@@ -90,7 +90,7 @@ class Reply:
         return '\n'.join(s)
 
 
-class Transport:
+class Transport(object):
     """
     The transport I{interface}.
     """

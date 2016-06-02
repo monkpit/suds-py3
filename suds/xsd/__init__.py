@@ -75,7 +75,7 @@ def isqref(object):
         isinstance(object[1], basestring))
 
 
-class Filter:
+class Filter(object):
     def __init__(self, inclusive=False, *items):
         self.inclusive = inclusive
         self.items = items

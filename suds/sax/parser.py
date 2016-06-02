@@ -101,7 +101,7 @@ class Handler(ContentHandler):
         return self.nodes[len(self.nodes)-1]
 
 
-class Parser:
+class Parser(object):
     """ SAX Parser """
 
     @classmethod

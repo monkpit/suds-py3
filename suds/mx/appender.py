@@ -29,17 +29,17 @@ from suds.sax.text import Text
 log = getLogger(__name__)
 
 
-class Matcher:
+class Matcher(object):
     """
     Appender matcher.
-    @ivar cls: A class object.
-    @type cls: I{classobj}
+    @ivar cls(object): A class object.
+    @type cls(object): I{classobj}
     """
 
     def __init__(self, cls):
         """
         @param cls: A class object.
-        @type cls: I{classobj}
+        @type cls(object): I{classobj}
         """
         self.cls = cls
 
@@ -50,13 +50,13 @@ class Matcher:
             return isinstance(x, self.cls)
 
 
-class ContentAppender:
+class ContentAppender(object):
     """
     Appender used to add content to marshalled objects.
-    @ivar default: The default appender.
-    @type default: L{Appender}
-    @ivar appenders: A I{table} of appenders mapped by class.
-    @type appenders: I{table}
+    @ivar default(object): The default appender.
+    @type default(object): L{Appender}
+    @ivar appenders(object): A I{table} of appenders mapped by class.
+    @type appenders(object): I{table}
     """
 
     def __init__(self, marshaller):
@@ -102,11 +102,11 @@ class ContentAppender:
         appender.append(parent, content)
 
 
-class Appender:
+class Appender(object):
     """
     An appender used by the marshaller to append content.
-    @ivar marshaller: A marshaller.
-    @type marshaller: L{suds.mx.core.Core}
+    @ivar marshaller(object): A marshaller.
+    @type marshaller(object): L{suds.mx.core.Core}
     """
 
     def __init__(self, marshaller):

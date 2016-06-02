@@ -117,7 +117,7 @@ class WebFault(Exception):
 #
 
 
-class Repr:
+class Repr(object):
     def __init__(self, x):
         self.x = x
 
@@ -177,7 +177,7 @@ def tostr(object, encoding=None):
         return str(object)
 
 
-class null:
+class null(object):
     """
     The I{null} object.
     Used to pass NULL for optional XML nodes.

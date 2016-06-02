@@ -27,16 +27,16 @@ from suds.sax.attribute import Attribute
 log = getLogger(__name__)
 
 
-class Element:
+class Element(object):
     """
     An XML element object.
-    @ivar parent: The node containing this attribute
-    @type parent: L{Element}
-    @ivar prefix: The I{optional} namespace prefix.
-    @type prefix: basestring
-    @ivar name: The I{unqualified} name of the attribute
-    @type name: basestring
-    @ivar expns: An explicit namespace (xmlns="...").
+    @ivar parent(object): The node containing this attribute
+    @type parent(object): L{Element}
+    @ivar prefix(object): The I{optional} namespace prefix.
+    @type prefix(object): basestring
+    @ivar name(object): The I{unqualified} name of the attribute
+    @type name(object): basestring
+    @ivar expns(object): An explicit namespace (xmlns="...").
     @type expns: (I{prefix}, I{name})
     @ivar nsprefixes: A mapping of prefixes to namespaces.
     @type nsprefixes: dict
@@ -950,7 +950,7 @@ class Element:
         return NodeIterator(self)
 
 
-class NodeIterator:
+class NodeIterator(object):
     """
     The L{Element} child node iterator.
     @ivar pos: The current position
@@ -985,14 +985,14 @@ class NodeIterator:
             raise StopIteration()
 
 
-class PrefixNormalizer:
+class PrefixNormalizer(object):
     """
     The prefix normalizer provides namespace prefix normalization.
-    @ivar node: A node to normalize.
-    @type node: L{Element}
-    @ivar branch: The nodes flattened branch.
-    @type branch: [L{Element},..]
-    @ivar namespaces: A unique list of namespaces (URI).
+    @ivar node(object): A node to normalize.
+    @type node(object): L{Element}
+    @ivar branch(object): The nodes flattened branch.
+    @type branch(object): [L{Element},..]
+    @ivar namespaces(object): A unique list of namespaces (URI).
     @type namespaces: [str,]
     @ivar prefixes: A reverse dict of prefixes.
     @type prefixes: {u, p}

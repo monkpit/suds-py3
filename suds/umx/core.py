@@ -34,7 +34,7 @@ reserved = {
 }
 
 
-class Core:
+class Core(object):
     """
     The abstract XML I{node} unmarshaller.  This class provides the
     I{core} unmarshalling functionality.
@@ -181,7 +181,7 @@ class Core:
         @param content: The current content being unmarshalled.
         @type content: L{Content}
         @return: A subclass of Object.
-        @rtype: L{Object}
+        @rtype(object): L{Object}
         """
         content.data = Factory.object(content.node.name)
 

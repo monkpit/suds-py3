@@ -52,7 +52,7 @@ def splitPrefix(name):
         return (None, name)
 
 
-class Namespace:
+class Namespace(object):
     """
     The namespace class represents XML namespaces.
     """

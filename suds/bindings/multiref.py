@@ -25,13 +25,13 @@ log = getLogger(__name__)
 soapenc = (None, 'http://schemas.xmlsoap.org/soap/encoding/')
 
 
-class MultiRef:
+class MultiRef(object):
     """
     Resolves and replaces multirefs.
-    @ivar nodes: A list of non-multiref nodes.
-    @type nodes: list
-    @ivar catalog: A dictionary of multiref nodes by id.
-    @type catalog: dict
+    @ivar nodes(object): A list of non-multiref nodes.
+    @type nodes(object): list
+    @ivar catalog(object): A dictionary of multiref nodes by id.
+    @type catalog(object): dict
     """
 
     def __init__(self):

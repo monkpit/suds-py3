@@ -13,7 +13,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 # written by: Jeff Ortel ( jortel@redhat.com )
-
 """
 The I{sxbasic} module provides classes that represent
 I{basic} schema objects.
@@ -28,14 +27,14 @@ from suds.transport import TransportError
 from suds.reader import DocumentReader
 from urllib.parse import urljoin
 
-
 log = getLogger(__name__)
 
 
-class RestrictionMatcher:
+class RestrictionMatcher(object):
     """
     For use with L{NodeFinder} to match restriction.
     """
+
     def match(self, n):
         return isinstance(n, Restriction)
 
@@ -44,6 +43,7 @@ class TypedContent(Content):
     """
     Represents any I{typed} content.
     """
+
     def resolve(self, nobuiltin=False):
         qref = self.qref()
         if qref is None:
@@ -98,19 +98,11 @@ class Complex(SchemaObject):
     """
 
     def childtags(self):
-        return (
-            'attribute',
-            'attributeGroup',
-            'sequence',
-            'all',
-            'choice',
-            'complexContent',
-            'simpleContent',
-            'any',
-            'group')
+        return ('attribute', 'attributeGroup', 'sequence', 'all', 'choice',
+                'complexContent', 'simpleContent', 'any', 'group')
 
     def description(self):
-        return ('name',)
+        return ('name', )
 
     def extension(self):
         for c in self.rawchildren:
@@ -153,7 +145,7 @@ class Group(SchemaObject):
         self.rawchildren = other.rawchildren
 
     def description(self):
-        return ('name', 'ref',)
+        return ('name', 'ref', )
 
 
 class AttributeGroup(SchemaObject):
@@ -184,7 +176,7 @@ class AttributeGroup(SchemaObject):
         self.rawchildren = other.rawchildren
 
     def description(self):
-        return ('name', 'ref',)
+        return ('name', 'ref', )
 
 
 class Simple(SchemaObject):
@@ -193,7 +185,7 @@ class Simple(SchemaObject):
     """
 
     def childtags(self):
-        return ('restriction', 'any', 'list',)
+        return ('restriction', 'any', 'list', )
 
     def enum(self):
         for child, ancestry in self.children():
@@ -205,7 +197,7 @@ class Simple(SchemaObject):
         return len(self)
 
     def description(self):
-        return ('name',)
+        return ('name', )
 
     def extension(self):
         for c in self.rawchildren:
@@ -229,7 +221,7 @@ class List(SchemaObject):
         return ()
 
     def description(self):
-        return ('name',)
+        return ('name', )
 
     def xslist(self):
         return True
@@ -270,7 +262,7 @@ class Restriction(SchemaObject):
         self.prepend(self.rawchildren, other.rawchildren, filter)
 
     def description(self):
-        return ('ref',)
+        return ('ref', )
 
 
 class Collection(SchemaObject):
@@ -289,6 +281,7 @@ class Sequence(Collection):
     """
     Represents an (xsd) schema <xs:sequence/> node.
     """
+
     def sequence(self):
         return True
 
@@ -297,6 +290,7 @@ class All(Collection):
     """
     Represents an (xsd) schema <xs:all/> node.
     """
+
     def all(self):
         return True
 
@@ -305,6 +299,7 @@ class Choice(Collection):
     """
     Represents an (xsd) schema <xs:choice/> node.
     """
+
     def choice(self):
         return True
 
@@ -395,7 +390,7 @@ class Element(TypedContent):
         return self
 
     def childtags(self):
-        return ('attribute', 'simpleType', 'complexType', 'any',)
+        return ('attribute', 'simpleType', 'complexType', 'any', )
 
     def extension(self):
         for c in self.rawchildren:
@@ -449,11 +444,7 @@ class Extension(SchemaObject):
         self.ref = root.get('base')
 
     def childtags(self):
-        return ('attribute',
-                'attributeGroup',
-                'sequence',
-                'all',
-                'choice',
+        return ('attribute', 'attributeGroup', 'sequence', 'all', 'choice',
                 'group')
 
     def dependencies(self):
@@ -479,7 +470,7 @@ class Extension(SchemaObject):
         return self.ref is not None
 
     def description(self):
-        return ('ref',)
+        return ('ref', )
 
 
 class Import(SchemaObject):
@@ -531,11 +522,8 @@ class Import(SchemaObject):
         if self.opened:
             return
         self.opened = True
-        log.debug('%s, importing ns="%s", location="%s"',
-                  self.id,
-                  self.ns[1],
-                  self.location
-                  )
+        log.debug('%s, importing ns="%s", location="%s"', self.id, self.ns[1],
+                  self.location)
         result = self.locate()
         if result is None:
             if self.location is None:
@@ -648,7 +636,7 @@ class Attribute(TypedContent):
         self.use = root.get('use', default='')
 
     def childtags(self):
-        return ('restriction',)
+        return ('restriction', )
 
     def isattr(self):
         return True
@@ -702,7 +690,7 @@ class Any(Content):
         return True
 
 
-class Factory:
+class Factory(object):
     """
     @cvar tags: A factory to create object objects based on tag.
     @type tags: {tag:fn,}
@@ -712,21 +700,21 @@ class Factory:
         'import': Import,
         'include': Include,
         'complexType': Complex,
-        'group': Group,
-        'attributeGroup': AttributeGroup,
-        'simpleType': Simple,
-        'list': List,
-        'element': Element,
-        'attribute': Attribute,
-        'sequence': Sequence,
-        'all': All,
-        'choice': Choice,
-        'complexContent': ComplexContent,
-        'simpleContent': SimpleContent,
-        'restriction': Restriction,
-        'enumeration': Enumeration,
-        'extension': Extension,
-        'any': Any,
+        'group' (object): Group,
+        'attributeGroup' (object): AttributeGroup,
+        'simpleType' (object): Simple,
+        'list' (object): List,
+        'element' (object): Element,
+        'attribute' (object): Attribute,
+        'sequence' (object): Sequence,
+        'all' (object): All,
+        'choice' (object): Choice,
+        'complexContent' (object): ComplexContent,
+        'simpleContent' (object): SimpleContent,
+        'restriction' (object): Restriction,
+        'enumeration' (object): Enumeration,
+        'extension' (object): Extension,
+        'any' (object): Any,
     }
 
     @classmethod
@@ -758,7 +746,7 @@ class Factory:
             return None
 
     @classmethod
-    def build(cls, root, schema, filter=('*',)):
+    def build(cls, root, schema, filter=('*', )):
         """
         Build an xsobject representation.
         @param root: An schema XML root.
@@ -808,16 +796,12 @@ class Factory:
             children.remove(i)
         return (children, imports, attributes, elements, types, groups, agrps)
 
-
 #######################################################
 # Static Import Bindings :-(
 #######################################################
-Import.bind(
-    'http://schemas.xmlsoap.org/soap/encoding/',
-    'suds://schemas.xmlsoap.org/soap/encoding/')
-Import.bind(
-    'http://www.w3.org/XML/1998/namespace',
-    'http://www.w3.org/2001/xml.xsd')
-Import.bind(
-    'http://www.w3.org/2001/XMLSchema',
-    'http://www.w3.org/2001/XMLSchema.xsd')
+Import.bind('http://schemas.xmlsoap.org/soap/encoding/',
+            'suds://schemas.xmlsoap.org/soap/encoding/')
+Import.bind('http://www.w3.org/XML/1998/namespace',
+            'http://www.w3.org/2001/xml.xsd')
+Import.bind('http://www.w3.org/2001/XMLSchema',
+            'http://www.w3.org/2001/XMLSchema.xsd')

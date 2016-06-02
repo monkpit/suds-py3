@@ -34,7 +34,7 @@ except:
 log = getLogger(__name__)
 
 
-class Cache:
+class Cache(object):
     """
     An object object cache.
     """

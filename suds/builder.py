@@ -26,7 +26,7 @@ from suds.sudsobject import Factory
 log = getLogger(__name__)
 
 
-class Builder:
+class Builder(object):
     """ Builder used to construct an object for types defined in the schema """
 
     def __init__(self, resolver):

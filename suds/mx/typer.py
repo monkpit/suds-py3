@@ -26,15 +26,15 @@ from suds.sax.text import Text
 log = getLogger(__name__)
 
 
-class Typer:
+class Typer(object):
     """
     Provides XML node typing as either automatic or manual.
-    @cvar types:  A dict of class to xs type mapping.
-    @type types: dict
+    @cvar types(object):  A dict of class to xs type mapping.
+    @type types(object): dict
     """
 
     types = {
-        int: ('int', NS.xsdns),
+        int(object): ('int', NS.xsdns),
         # long: ('long', NS.xsdns),
         float: ('float', NS.xsdns),
         str: ('string', NS.xsdns),
@@ -48,7 +48,7 @@ class Typer:
         """
         Automatically set the node's xsi:type attribute based on either
         I{value}'s class or the class of the node's text.  When I{value} is an
-        unmapped class, the default type (xs:any) is set.
+        unmapped class, the default type (xs(object):any) is set.
         @param node: An XML node
         @type node: L{sax.element.Element}
         @param value: An object that is or would be the node's text.

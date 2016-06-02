@@ -26,15 +26,15 @@ from suds.sax import Namespace
 log = getLogger(__name__)
 
 
-class ServiceDefinition:
+class ServiceDefinition(object):
     """
     A service definition provides an object used to generate a textual
     description of a service.
-    @ivar wsdl: A wsdl.
-    @type wsdl: L{wsdl.Definitions}
-    @ivar service: The service object.
-    @type service: L{suds.wsdl.Service}
-    @ivar ports: A list of port-tuple: (port, [(method-name, pdef)])
+    @ivar wsdl(object): A wsdl.
+    @type wsdl(object): L{wsdl.Definitions}
+    @ivar service(object): The service object.
+    @type service(object): L{suds.wsdl.Service}
+    @ivar ports(object): A list of port-tuple(object): (port, [(method-name, pdef)])
     @type ports: [port-tuple,..]
     @ivar prefixes: A list of remapped prefixes.
     @type prefixes: [(prefix,uri),..]

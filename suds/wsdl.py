@@ -883,20 +883,20 @@ class Service(NamedObject):
         return True
 
 
-class Factory:
+class Factory(object):
     """
     Simple WSDL object factory.
-    @cvar tags: Dictionary of tag->constructor mappings.
-    @type tags: dict
+    @cvar tags(object): Dictionary of tag->constructor mappings.
+    @type tags(object): dict
     """
 
     tags = {
-        'import': Import,
-        'types': Types,
-        'message': Message,
-        'portType': PortType,
-        'binding': Binding,
-        'service': Service,
+        'import'(object): Import,
+        'types'(object): Types,
+        'message'(object): Message,
+        'portType'(object): PortType,
+        'binding'(object): Binding,
+        'service'(object): Service,
     }
 
     @classmethod
