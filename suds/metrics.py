@@ -26,7 +26,7 @@ from math import modf
 log = getLogger(__name__)
 
 
-class Timer:
+class Timer(object):
 
     def __init__(self):
         self.started = 0

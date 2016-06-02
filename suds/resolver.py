@@ -29,11 +29,11 @@ from suds.xsd.query import BlindQuery, qualify
 log = getLogger(__name__)
 
 
-class Resolver:
+class Resolver(object):
     """
     An I{abstract} schema-type resolver.
-    @ivar schema: A schema object.
-    @type schema: L{xsd.schema.Schema}
+    @ivar schema(object): A schema object.
+    @type schema(object): L{xsd.schema.Schema}
     """
 
     def __init__(self, schema):
@@ -469,7 +469,7 @@ class GraphResolver(TreeResolver):
             pass
 
 
-class Frame:
+class Frame(object):
     def __init__(self, type, resolved=None, ancestry=()):
         self.type = type
         if resolved is None:
@@ -483,7 +483,7 @@ class Frame:
             Repr(self.resolved),
             [Repr(t) for t in self.ancestry])
 
-    class Empty:
+    class Empty(object):
         def __getattr__(self, name):
             if name == 'ancestry':
                 return ()

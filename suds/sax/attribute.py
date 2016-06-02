@@ -26,17 +26,17 @@ from suds.compat import unicode
 log = getLogger(__name__)
 
 
-class Attribute:
+class Attribute(object):
     """
     An XML attribute object.
-    @ivar parent: The node containing this attribute
-    @type parent: L{element.Element}
-    @ivar prefix: The I{optional} namespace prefix.
-    @type prefix: basestring
-    @ivar name: The I{unqualified} name of the attribute
-    @type name: basestring
-    @ivar value: The attribute's value
-    @type value: basestring
+    @ivar parent(object): The node containing this attribute
+    @type parent(object): L{element.Element}
+    @ivar prefix(object): The I{optional} namespace prefix.
+    @type prefix(object): basestring
+    @ivar name(object): The I{unqualified} name of the attribute
+    @type name(object): basestring
+    @ivar value(object): The attribute's value
+    @type value(object): basestring
     """
     def __init__(self, name, value=None):
         """

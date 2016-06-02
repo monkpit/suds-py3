@@ -21,7 +21,7 @@ Provides filtered attribute list classes.
 from suds.sax import Namespace
 
 
-class AttrList:
+class AttrList(object):
     """
     A filtered attribute list.
     Items are included during iteration if they are in either the (xs) or

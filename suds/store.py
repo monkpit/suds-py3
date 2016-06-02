@@ -535,20 +535,20 @@ encoding = """<?xml version="1.0" encoding="UTF-8"?>
 """
 
 
-class DocumentStore:
+class DocumentStore(object):
     """
     The I{suds} document store provides a local repository
     for xml documnts.
-    @cvar protocol: The URL protocol for the store.
-    @type protocol: str
-    @cvar store: The mapping of URL location to documents.
-    @type store: dict
+    @cvar protocol(object): The URL protocol for the store.
+    @type protocol(object): str
+    @cvar store(object): The mapping of URL location to documents.
+    @type store(object): dict
     """
 
     protocol = 'suds'
 
     store = {
-        'schemas.xmlsoap.org/soap/encoding/': encoding
+        'schemas.xmlsoap.org/soap/encoding/'(object): encoding
     }
 
     def open(self, url):

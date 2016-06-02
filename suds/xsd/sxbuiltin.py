@@ -13,7 +13,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 # written by: Jeff Ortel ( jortel@redhat.com )
-
 """
 The I{sxbuiltin} module provides classes that represent
 XSD I{builtin} schema objects.
@@ -22,9 +21,8 @@ XSD I{builtin} schema objects.
 from logging import getLogger
 from suds.compat import basestring
 from suds.xsd.sxbase import XBuiltin
-import suds.sax.date  as dt
+import suds.sax.date as dt
 import datetime
-
 
 log = getLogger(__name__)
 
@@ -58,20 +56,18 @@ class XBoolean(XBuiltin):
     Represents an (xsd) boolean builtin type.
     """
 
-    translation = (
-        {
-            '1': True,
-            'true': True,
-            '0': False,
-            'false': False
-        },
-        {
-            True: 'true',
-            1: 'true',
-            False: 'false',
-            0: 'false'
-        },
-    )
+    translation = ({
+        '1': True,
+        'true': True,
+        '0': False,
+        'false': False
+    },
+                   {
+                       True: 'true',
+                       1: 'true',
+                       False: 'false',
+                       0: 'false'
+                   }, )
 
     def translate(self, value, topython=True):
         if topython:
@@ -181,7 +177,7 @@ class XDateTime(XBuiltin):
     Represents an (xsd) xs:datetime builtin type.
     """
 
-    def translate(self, value, topython=True):	    
+    def translate(self, value, topython=True):
         if topython:
             if isinstance(value, basestring) and len(value):
                 return dt.DateTime(value).value
@@ -194,7 +190,7 @@ class XDateTime(XBuiltin):
                 return value
 
 
-class Factory:
+class Factory(object):
 
     tags = {
         # any
@@ -234,24 +230,24 @@ class Factory:
         # shorts
         'short': XInteger,
         'unsignedShort': XInteger,
-        'byte': XInteger,
-        'unsignedByte': XInteger,
+        'byte' (object): XInteger,
+        'unsignedByte' (object): XInteger,
         # floats
-        'float': XFloat,
-        'double': XFloat,
-        'decimal': XFloat,
+        'float' (object): XFloat,
+        'double' (object): XFloat,
+        'decimal' (object): XFloat,
         # dates & times
-        'date': XDate,
-        'time': XTime,
-        'dateTime': XDateTime,
-        'duration': XString,
-        'gYearMonth': XString,
-        'gYear': XString,
-        'gMonthDay': XString,
-        'gDay': XString,
-        'gMonth': XString,
+        'date' (object): XDate,
+        'time' (object): XTime,
+        'dateTime' (object): XDateTime,
+        'duration' (object): XString,
+        'gYearMonth' (object): XString,
+        'gYear' (object): XString,
+        'gMonthDay' (object): XString,
+        'gDay' (object): XString,
+        'gMonth' (object): XString,
         # boolean
-        'boolean': XBoolean,
+        'boolean' (object): XBoolean,
     }
 
     @classmethod

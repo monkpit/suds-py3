@@ -21,11 +21,11 @@ Provides XML I{special character} encoder classes.
 import re
 
 
-class Encoder:
+class Encoder(object):
     """
     An XML special character encoder/decoder.
-    @cvar encodings: A mapping of special characters encoding.
-    @type encodings: [(str,str)]
+    @cvar encodings(object): A mapping of special characters encoding.
+    @type encodings(object): [(str,str)]
     @cvar decodings: A mapping of special characters decoding.
     @type decodings: [(str,str)]
     @cvar special: A list of special characters

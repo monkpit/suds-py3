@@ -28,12 +28,12 @@ from suds.sudsobject import Property
 log = getLogger(__name__)
 
 
-class Core:
+class Core(object):
     """
     An I{abstract} marshaller.  This class implement the core
     functionality of the marshaller.
-    @ivar appender: A content appender.
-    @type appender: L{ContentAppender}
+    @ivar appender(object): A content appender.
+    @type appender(object): L{ContentAppender}
     """
 
     def __init__(self):

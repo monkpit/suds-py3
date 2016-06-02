@@ -41,12 +41,12 @@ envns = ('SOAP-ENV', 'http://schemas.xmlsoap.org/soap/envelope/')
 # envns = ('soapenv', 'http://schemas.xmlsoap.org/soap/envelope/')
 
 
-class Binding:
+class Binding(object):
     """
     The soap binding class used to process outgoing and imcoming
     soap messages per the WSDL port binding.
-    @cvar replyfilter: The reply filter function.
-    @type replyfilter: (lambda s,r: r)
+    @cvar replyfilter(object): The reply filter function.
+    @type replyfilter(object): (lambda s,r(object): r)
     @ivar wsdl: The wsdl.
     @type wsdl: L{suds.wsdl.Definitions}
     @ivar schema: The collective schema contained within the wsdl.

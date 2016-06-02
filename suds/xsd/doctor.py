@@ -27,7 +27,7 @@ from suds.plugin import DocumentPlugin, DocumentContext
 log = getLogger(__name__)
 
 
-class Doctor:
+class Doctor(object):
     """
     Schema Doctor.
     """
@@ -64,11 +64,11 @@ class Practice(Doctor):
         return root
 
 
-class TnsFilter:
+class TnsFilter(object):
     """
     Target Namespace filter.
-    @ivar tns: A list of target namespaces.
-    @type tns: [str,...]
+    @ivar tns(object): A list of target namespaces.
+    @type tns(object): [str,...]
     """
 
     def __init__(self, *tns):
@@ -104,11 +104,11 @@ class TnsFilter:
         return matched and not itself
 
 
-class Import:
+class Import(object):
     """
-    An <xs:import/> to be applied.
-    @cvar xsdns: The XSD namespace.
-    @type xsdns: (p,u)
+    An <xs(object):import/> to be applied.
+    @cvar xsdns(object): The XSD namespace.
+    @type xsdns(object): (p,u)
     @ivar ns: An import namespace.
     @type ns: str
     @ivar location: An optional I{schemaLocation}.

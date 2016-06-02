@@ -218,13 +218,13 @@ class Client(object):
         return ''.join(s)
 
 
-class Factory:
+class Factory(object):
     """
     A factory for instantiating types defined in the wsdl
-    @ivar resolver: A schema type resolver.
-    @type resolver: L{PathResolver}
-    @ivar builder: A schema object builder.
-    @type builder: L{Builder}
+    @ivar resolver(object): A schema type resolver.
+    @type resolver(object): L{PathResolver}
+    @ivar builder(object): A schema object builder.
+    @type builder(object): L{Builder}
     """
 
     def __init__(self, wsdl):
@@ -272,7 +272,7 @@ class Factory:
         self.resolver = PathResolver(self.wsdl, ps)
 
 
-class ServiceSelector:
+class ServiceSelector(object):
     """
     The B{service} selector is used to select a web service.
     In most cases, the wsdl only defines (1) service in which access
@@ -374,7 +374,7 @@ class ServiceSelector:
             return self.__find(ds)
 
 
-class PortSelector:
+class PortSelector(object):
     """
     The B{port} selector is used to select a I{web service} B{port}.
     In cases where multiple ports have been defined and no default has been
@@ -477,14 +477,14 @@ class PortSelector:
             return self.__find(dp)
 
 
-class MethodSelector:
+class MethodSelector(object):
     """
     The B{method} selector is used to select a B{method} by name.
-    @ivar __client: A suds client.
-    @type __client: L{Client}
-    @ivar __methods: A dictionary of methods.
-    @type __methods: dict
-    @ivar __qn: The I{qualified} name of the method (used for logging).
+    @ivar __client(object): A suds client.
+    @type __client(object): L{Client}
+    @ivar __methods(object): A dictionary of methods.
+    @type __methods(object): dict
+    @ivar __qn(object): The I{qualified} name of the method (used for logging).
     @type __qn: str
     """
     def __init__(self, client, methods, qn):
@@ -525,7 +525,7 @@ class MethodSelector:
         return Method(self.__client, m)
 
 
-class Method:
+class Method(object):
     """
     The I{method} (namespace) object.
     @ivar client: A client object.
@@ -570,17 +570,17 @@ class Method:
             return SoapClient
 
 
-class SoapClient:
+class SoapClient(object):
     """
     A lightweight soap based web client B{**not intended for external use}
-    @ivar service: The target method.
-    @type service: L{Service}
-    @ivar method: A target method.
-    @type method: L{Method}
-    @ivar options: A dictonary of options.
-    @type options: dict
-    @ivar cookiejar: A cookie jar.
-    @type cookiejar: libcookie.CookieJar
+    @ivar service(object): The target method.
+    @type service(object): L{Service}
+    @ivar method(object): A target method.
+    @type method(object): L{Method}
+    @ivar options(object): A dictonary of options.
+    @type options(object): dict
+    @ivar cookiejar(object): A cookie jar.
+    @type cookiejar(object): libcookie.CookieJar
     """
 
     def __init__(self, client, method):

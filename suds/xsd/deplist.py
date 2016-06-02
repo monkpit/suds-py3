@@ -25,10 +25,10 @@ from suds import Repr
 log = getLogger(__name__)
 
 
-class DepList:
+class DepList(object):
     """
     Dependancy solving list.
-    Items are tuples: (object, (deps,))
+    Items are tuples(object): (object, (deps,))
     @ivar raw: The raw (unsorted) items.
     @type raw: list
     @ivar index: The index of (unsorted) items.

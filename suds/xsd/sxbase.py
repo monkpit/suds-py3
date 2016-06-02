@@ -504,16 +504,16 @@ class SchemaObject(object):
                 return c
 
 
-class Iter:
+class Iter(object):
     """
     The content iterator - used to iterate the L{Content} children.  The
     iterator provides a I{view} of the children that is free of container
     elements such as <sequence/> and <choice/>.
-    @ivar stack: A stack used to control nesting.
-    @type stack: list
+    @ivar stack(object): A stack used to control nesting.
+    @type stack(object): list
     """
 
-    class Frame:
+    class Frame(object):
         """ A content iterator frame. """
 
         def __init__(self, sx):
@@ -635,7 +635,7 @@ class Content(SchemaObject):
     pass
 
 
-class NodeFinder:
+class NodeFinder(object):
     """
     Find nodes based on flexable criteria.  The I{matcher} is
     may be any object that implements a match(n) method.

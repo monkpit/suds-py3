@@ -131,12 +131,12 @@ class Endpoint(object):
         return getattr(self.target, name)
 
 
-class Definition:
+class Definition(object):
     """
     Property definition.
-    @ivar name: The property name.
-    @type name: str
-    @ivar classes: The (class) list of permitted values
+    @ivar name(object): The property name.
+    @type name(object): str
+    @ivar classes(object): The (class) list of permitted values
     @type classes: tuple
     @ivar default: The default value.
     @ivar type: any
@@ -196,20 +196,20 @@ class Definition:
         return ', '.join(s)
 
 
-class Properties:
+class Properties(object):
     """
     Represents basic application properties.
     Provides basic type validation, default values and
     link/synchronization behavior.
-    @ivar domain: The domain name.
-    @type domain: str
-    @ivar definitions: A table of property definitions.
-    @type definitions: {name: L{Definition}}
-    @ivar links: A list of linked property objects used to create
+    @ivar domain(object): The domain name.
+    @type domain(object): str
+    @ivar definitions(object): A table of property definitions.
+    @type definitions(object): {name(object): L{Definition}}
+    @ivar links(object): A list of linked property objects used to create
         a network of properties.
-    @type links: [L{Property},..]
-    @ivar defined: A dict of property values.
-    @type defined: dict
+    @type links(object): [L{Property},..]
+    @ivar defined(object): A dict of property values.
+    @type defined(object): dict
     """
     def __init__(self, domain, definitions, kwargs):
         """
@@ -487,7 +487,7 @@ class Unskin(object):
         return args[0].__pts__
 
 
-class Inspector:
+class Inspector(object):
     """
     Wrapper inspector.
     """

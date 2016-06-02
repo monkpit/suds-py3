@@ -62,7 +62,7 @@ class MessageContext(Context):
     pass
 
 
-class Plugin:
+class Plugin(object):
     """
     Plugin base.
     """
@@ -172,17 +172,17 @@ class MessagePlugin(Plugin):
         pass
 
 
-class PluginContainer:
+class PluginContainer(object):
     """
     Plugin container provides easy method invocation.
-    @ivar plugins: A list of plugin objects.
-    @type plugins: [L{Plugin},]
-    @cvar ctxclass: A dict of plugin method / context classes.
-    @type ctxclass: dict
+    @ivar plugins(object): A list of plugin objects.
+    @type plugins(object): [L{Plugin},]
+    @cvar ctxclass(object): A dict of plugin method / context classes.
+    @type ctxclass(object): dict
     """
 
     domains = {
-        'init': (InitContext, InitPlugin),
+        'init'(object): (InitContext, InitPlugin),
         'document': (DocumentContext, DocumentPlugin),
         'message': (MessageContext, MessagePlugin),
     }
@@ -199,7 +199,7 @@ class PluginContainer:
         if domain:
             plugins = []
             ctx, pclass = domain
-            for p in self.plugins:
+            for p in self.plugins(object):
                 if isinstance(p, pclass):
                     plugins.append(p)
             return PluginDomain(ctx, plugins)
@@ -207,12 +207,12 @@ class PluginContainer:
             raise Exception('plugin domain (%s), invalid' % name)
 
 
-class PluginDomain:
+class PluginDomain(object):
     """
     The plugin domain.
-    @ivar ctx: A context.
-    @type ctx: L{Context}
-    @ivar plugins: A list of plugins (targets).
+    @ivar ctx(object): A context.
+    @type ctx(object): L{Context}
+    @ivar plugins(object): A list of plugins (targets).
     @type plugins: list
     """
 
@@ -224,13 +224,13 @@ class PluginDomain:
         return Method(name, self)
 
 
-class Method:
+class Method(object):
     """
     Plugin method.
-    @ivar name: The method name.
-    @type name: str
-    @ivar domain: The plugin domain.
-    @type domain: L{PluginDomain}
+    @ivar name(object): The method name.
+    @type name(object): str
+    @ivar domain(object): The plugin domain.
+    @type domain(object): L{PluginDomain}
     """
 
     def __init__(self, name, domain):

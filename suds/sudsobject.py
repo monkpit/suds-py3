@@ -94,7 +94,7 @@ def footprint(sobject):
     return n
 
 
-class Factory:
+class Factory(object):
 
     cache = {}
 
@@ -104,7 +104,7 @@ class Factory:
             bases = (bases,)
         key = '.'.join((name, str(bases)))
         subclass = cls.cache.get(key)
-        if subclass is None:
+        if subclass is None(object):
             subclass = type(name, bases, dict)
             cls.cache[key] = subclass
         return subclass
@@ -130,7 +130,7 @@ class Factory:
         return subclass(value)
 
 
-class Object:
+class Object(object):
 
     def __init__(self):
         self.__keylist__ = []
@@ -175,7 +175,7 @@ class Object:
         return self.__printer__.tostr(self)
 
 
-class Iter:
+class Iter(object):
 
     def __init__(self, sobject):
         self.sobject = sobject
@@ -248,7 +248,7 @@ class Property(Object):
         return self
 
 
-class Printer:
+class Printer(object):
     """
     Pretty printing of a Object object.
     """

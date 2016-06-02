@@ -36,16 +36,16 @@ from logging import getLogger
 log = getLogger(__name__)
 
 
-class SchemaCollection:
+class SchemaCollection(object):
     """
     A collection of schema objects.  This class is needed because WSDLs
     may contain more then one <schema/> node.
-    @ivar wsdl: A wsdl object.
-    @type wsdl: L{suds.wsdl.Definitions}
-    @ivar children: A list contained schemas.
-    @type children: [L{Schema},...]
-    @ivar namespaces: A dictionary of contained schemas by namespace.
-    @type namespaces: {str:L{Schema}}
+    @ivar wsdl(object): A wsdl object.
+    @type wsdl(object): L{suds.wsdl.Definitions}
+    @ivar children(object): A list contained schemas.
+    @type children(object): [L{Schema},...]
+    @ivar namespaces(object): A dictionary of contained schemas by namespace.
+    @type namespaces(object): {str(object):L{Schema}}
     """
 
     def __init__(self, wsdl):
@@ -158,7 +158,7 @@ class SchemaCollection:
         return '\n'.join(result)
 
 
-class Schema:
+class Schema(object):
     """
     The schema is an objectification of a <schema/> (xsd) definition.
     It provides inspection, lookup and type resolution.

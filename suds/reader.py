@@ -29,11 +29,11 @@ from suds.plugin import PluginContainer
 log = getLogger(__name__)
 
 
-class Reader:
+class Reader(object):
     """
     The reader provides integration with cache.
-    @ivar options: An options object.
-    @type options: I{Options}
+    @ivar options(object): An options object.
+    @type options(object): I{Options}
     """
 
     def __init__(self, options):
